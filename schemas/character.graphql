@@ -1,0 +1,6 @@
+type Character {
+  id: ID
+  name: String
+  status: String
+  episode: [String]
+}

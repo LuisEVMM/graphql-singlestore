@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/2225c3ed-97de-434b-9b6f-225ffd8c4ce1/resourceGroups/apolloserverdemo/providers/Microsoft.Web/sites/apolloserverdemo",
+    "appService.deploySubpath": "."
+}
