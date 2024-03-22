@@ -5,11 +5,10 @@
   "main": "build/app.js",
   "scripts": {
     "start": "node build/app.js",
-    "build": "npx tsc -p . && ncp src/schema build/schema",
+    "build": "npx tsc -p . && ncp src/schemas build/schemas",
     "dev": "nodemon \"src/app.ts\" --exec \"ts-node\" \"src/app.ts\" -e ts,graphql,json"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -22,6 +21,7 @@
     "express": "^4.18.2",
     "graphql": "^16.8.1",
     "mysql2": "^3.9.2",
+    "ncp": "^2.0.0",
     "node-fetch": "^3.3.2",
     "sequelize": "^6.37.0",
     "typescript": "^5.4.3"
