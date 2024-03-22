@@ -4,11 +4,11 @@ class Database {
 
   constructor() {
     this.connection = mysql.createConnection({
-      host: 'localhost',
+      host: '52.226.25.168',
       port: 3306,
       user: 'root',
-      password: 'root',
-      database: 'graphql'
+      password: 'Fakesoliman$1',
+      database: 'TEST2'
     });
     this.connect();
   }
