@@ -1,14 +1,9 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import { resolvers } from "./resolvers/resolvers.js";
-import { readFileSync } from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { loadFilesSync } from "@graphql-tools/load-files";
-import { mergeTypeDefs } from "@graphql-tools/merge";
-import { printSchema } from "graphql";
+import { resolvers } from "./resolvers/resolvers";
 import { loadSchemaSync } from "@graphql-tools/load";
 import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
+import Database from "./data/database";
 
 /* Primera Opcion */
 // const typeDefs = readFileSync("./schemas/schema.graphql", {
@@ -34,11 +29,20 @@ const typeDefs = loadSchemaSync("./**/*.graphql", {
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
-});
+  resolvers
+}
+);
+async function start() {
+  const database = new Database();
+  const db = database.getConnection();
+  const createContext = async () => {
+    return { db }
+  }
+  const { url } = await startStandaloneServer(server, {
+    context: createContext,
+    listen: { port: 8080 },
+  });
+  console.log(`🚀  Server ready at: ${url}`);
+}
 
-const { url } = await startStandaloneServer(server, {
-  listen: { port: 8080 },
-});
-
-console.log(`🚀  Server ready at: ${url}`);
+start();

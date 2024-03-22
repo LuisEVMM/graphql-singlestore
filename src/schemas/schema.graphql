@@ -13,4 +13,14 @@ type Query {
   user(id: ID!): User
   users: [User]
   characters: [Character]
+  usersdb: [UserDB]
+}
+
+
+type UserDB{
+    id:ID!
+    name:String!
+    lastname:String!
+    email:String!
+    password:String
 }

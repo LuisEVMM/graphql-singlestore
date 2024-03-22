@@ -1,15 +1,17 @@
 {
   "name": "gql-demo-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Proyecto con conexion a base de datos",
+  "main": "build/app.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node build/app.js",
+    "build": "npx tsc -p . && ncp src/schema build/schema",
+    "dev": "nodemon \"src/app.ts\" --exec \"ts-node\" \"src/app.ts\" -e ts,graphql,json"
   },
-  "keywords": [],
+  "keywords": [
+  ],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "@apollo/server": "^4.10.0",
     "@graphql-tools/graphql-file-loader": "^8.0.1",
@@ -19,7 +21,17 @@
     "@graphql-tools/schema": "^10.0.3",
     "express": "^4.18.2",
     "graphql": "^16.8.1",
+    "mysql2": "^3.9.2",
     "node-fetch": "^3.3.2",
-    "sequelize": "^6.37.0"
+    "sequelize": "^6.37.0",
+    "typescript": "^5.4.3"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/express": "^4.17.14",
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^20.11.28",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2"
   }
 }
